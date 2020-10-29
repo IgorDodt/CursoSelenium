@@ -2,10 +2,10 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TesteFrameEJnaleas {
@@ -57,5 +57,16 @@ private DSL dsl;
 		dsl.escrever(By.tagName("textarea"), "Deu certo?");
 		dsl.trocarJanela((String) driver.getWindowHandles().toArray()[0]);
 		dsl.escrever(By.tagName("textarea"), "e agora?");
+	}
+	
+	@Test
+	public void deveInteragirFrameEscondido() {
+		WebElement frame = driver.findElement(By.id("frame2"));
+		dsl.executarJS("window.scrollBy(0,arguments[0])", frame.getLocation().y);
+		
+		dsl.entrarFrame("frame2");
+		dsl.clicarBotao("frameButton");
+		String msg = dsl.alertaObterTextoEAceita();
+		Assert.assertEquals("Frame OK!", msg);
 	}
 }

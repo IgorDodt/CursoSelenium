@@ -5,13 +5,11 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 
 public class TesteCampoTreinamento {
 
@@ -29,7 +27,7 @@ public class TesteCampoTreinamento {
 
 	@After
 	public void shutdown() {
-		driver.quit();
+		//driver.quit();
 	}
 
 	@Test
@@ -112,5 +110,10 @@ public class TesteCampoTreinamento {
 		
 		Assert.assertEquals("Cuidado onde clica, muitas armadilhas...", 
 				dsl.obterTexto(By.className("facilAchar")));
+	}
+	
+	@Test
+	public void deveClicarBotaotabela() {
+		
 	}
 }
