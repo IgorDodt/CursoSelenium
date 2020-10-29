@@ -39,13 +39,13 @@ public class TesteCadastro {
 		page.setEsporte("Natacao");
 		page.cadastrar();
 		
-		Assert.assertTrue(page.obterResultadoCadastro().startsWith("Cadastrado!"));
-		Assert.assertTrue(page.obterNomeCadastro().endsWith("Igor"));
-		Assert.assertEquals("Sobrenome: Dodt", page.obterSobrenomeCadastro());
-		Assert.assertEquals("Sexo: Masculino", page.obterSexoCadastro());
-		Assert.assertEquals("Comida: Pizza", page.obterComidaCadastro());
-		Assert.assertEquals("Escolaridade: mestrado", page.obterEscolaridadeCadastro());
-		Assert.assertEquals("Esportes: Natacao", page.obterEsporteCadastro());
+		Assert.assertEquals("Cadastrado!", page.obterResultadoCadastro());
+		Assert.assertEquals("Igor", page.obterNomeCadastro());
+		Assert.assertEquals("Dodt", page.obterSobrenomeCadastro());
+		Assert.assertEquals("Masculino", page.obterSexoCadastro());
+		Assert.assertEquals("Pizza", page.obterComidaCadastro());
+		Assert.assertEquals("mestrado", page.obterEscolaridadeCadastro());
+		Assert.assertEquals("Natacao", page.obterEsporteCadastro());
 	}
 	
 	@Test

@@ -114,6 +114,6 @@ public class TesteCampoTreinamento {
 	
 	@Test
 	public void deveClicarBotaotabela() {
-		
+		dsl.clicarBotaoTabela("Nome", "Maria", "Botao", "elementosForm:tableUsuarios");
 	}
 }
