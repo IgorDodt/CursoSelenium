@@ -1,3 +1,7 @@
+package br.ce.igordodt.test;
+import static br.ce.igordodt.core.DriverFactory.getDriver;
+import static br.ce.igordodt.core.DriverFactory.killDriver;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -6,28 +10,22 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+import br.ce.igordodt.core.DSL;
 
 public class TesteCampoTreinamento {
 
-	private WebDriver driver;
 	private DSL dsl;
 
 	@Before
 	public void inicializa() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\ChromeDriver\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.manage().window().setSize(new Dimension(1200, 765));
-		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-		dsl = new DSL(driver);
+		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		dsl = new DSL();
 	}
 
 	@After
 	public void shutdown() {
-		//driver.quit();
+		killDriver();
 	}
 
 	@Test
@@ -104,7 +102,7 @@ public class TesteCampoTreinamento {
 	
 	@Test
 	public void deveBuscarTextosNaPagina(){
-//		Assert.assertTrue(driver.findElement(By.tagName("body"))
+//		Assert.assertTrue(getDriver().findElement(By.tagName("body"))
 //				.getText().contains("Campo de Treinamento"));
 		Assert.assertEquals("Campo de Treinamento", dsl.obterTexto(By.tagName("h3")));
 		

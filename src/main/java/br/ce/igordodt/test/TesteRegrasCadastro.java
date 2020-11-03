@@ -1,8 +1,10 @@
+package br.ce.igordodt.test;
+import static br.ce.igordodt.core.DriverFactory.getDriver;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,18 +12,16 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+import br.ce.igordodt.core.BaseTest;
+import br.ce.igordodt.core.DSL;
+import br.ce.igordodt.page.CampoTreinamentoPage;
 
 @RunWith(Parameterized.class)
-public class TesteRegrasCadastro {
+public class TesteRegrasCadastro extends BaseTest {
 	
-	private WebDriver driver;
 	private DSL dsl;
 	private CampoTreinamentoPage page;
-	private String dirCasa = "C:\\Program Files (x86)\\ChromeDriver\\chromedriver.exe";
-	private String dirTrab = "C:\\Program Files (x86)\\Google\\chromedriver.exe";
 	
 	@Parameter
 	public String nome;
@@ -38,17 +38,9 @@ public class TesteRegrasCadastro {
 	
 	@Before
 	public void inicializa() {
-		System.setProperty("webdriver.chrome.driver", dirTrab);
-		driver = new ChromeDriver();
-		driver.manage().window().setSize(new Dimension(1200,765));
-		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-		dsl = new DSL(driver);
-		page = new CampoTreinamentoPage(driver);
-	}
-	
-	@After
-	public void shutdown() {
-		driver.quit();
+		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		dsl = new DSL();
+		page = new CampoTreinamentoPage();
 	}
 	
 	@Parameters

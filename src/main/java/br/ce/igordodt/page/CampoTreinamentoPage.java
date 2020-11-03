@@ -1,13 +1,9 @@
+package br.ce.igordodt.page;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-public class CampoTreinamentoPage {
-	
-	private DSL dsl;
-	
-	public CampoTreinamentoPage(WebDriver driver) {
-		dsl = new DSL(driver);
-	}
+import br.ce.igordodt.core.BasePage;
+
+public class CampoTreinamentoPage extends BasePage{
 	
 	public void setNome(String nome) {
 		dsl.escrever("elementosForm:nome", nome);
